@@ -66,13 +66,13 @@ module.exports = {
             if (params.length) {
                 for (let i = 0; i < params.length; i++) {
                     if (i == 0) {
-                        where += ` WHERE ${Object.keys(params[i])[0]} = ${
+                        where += ` WHERE ${Object.keys(params[i])[0]} = "${
                             params[i][Object.keys(params[i])[0]]
-                        } `;
+                        }" `;
                     } else {
-                        where += ` AND ${Object.keys(params[i])[0]} = ${
+                        where += ` AND ${Object.keys(params[i])[0]} = "${
                             params[i][Object.keys(params[i])[0]]
-                        } `;
+                        }" `;
                     }
                 }
             }
@@ -86,6 +86,37 @@ module.exports = {
             } catch (error) {
                 reject(error);
             }
+        });
+    },
+    FETCH: async (
+        con,
+        table,
+        { columns = false, condition = "", orderBy = false } = {}
+    ) => {
+        let query = `
+            SELECT
+                ${columns ? columns : `*`}
+            FROM
+                ${table} `;
+        if (condition) {
+            query += `
+                    WHERE 
+                    ${condition}
+                `;
+        }
+
+        if (orderBy) {
+            query += ` ORDER BY ${orderBy}`;
+        }
+
+        return await con.query(query);
+    },
+    errorResponse: (res, error, { status = 502 } = {}) => {
+        return res.status(status).json({
+            status: 0,
+            msg: "System catch an error",
+            data: [],
+            error: error.message ? error.message : error,
         });
     },
 };

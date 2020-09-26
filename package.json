@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "express-form": "^0.12.6",
+    "mysql": "^2.18.1",
+    "randomstring": "^1.1.5"
   }
 }

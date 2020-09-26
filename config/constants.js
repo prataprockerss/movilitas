@@ -1,4 +1,11 @@
-const commonConstants = {};
+const commonConstants = {
+    DB: require("./dbTable"),
+    RS_CONFIG: {
+        length: 12,
+        charset: "alphabetic",
+    },
+    TTL : 10 // This Time is in Minute
+};
 
 const dev = {
     ...commonConstants,

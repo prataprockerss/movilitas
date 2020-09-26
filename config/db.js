@@ -1,6 +1,6 @@
 let mysql = require("mysql");
 let constants = require("./constants");
-let util = require(util);
+let util = require("util");
 
 // create connection
 

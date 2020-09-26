@@ -23,16 +23,13 @@ module.exports = {
                 1 = 1
         `;
         if (key) {
-            query += ` AND key = "${key}"`;
+            query += ` AND cached_key = "${key}" `;
         }
         if (is_valid) {
             query += `
                 HAVING is_valid = "${is_valid}"
             `;
         }
-
         return await conn.query(query);
-    },
-
-    update 
+    }
 };
