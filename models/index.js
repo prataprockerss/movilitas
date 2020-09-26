@@ -1,7 +1,5 @@
-const { query } = require("express");
-const conn = require("../config/db");
 module.exports = {
-    get: async ({ key = false, is_valid = false } = {}) => {
+    get: async (conn, { key = false, is_valid = false } = {}) => {
         let query = `
             SELECT 
                 c.*,
@@ -30,6 +28,8 @@ module.exports = {
                 HAVING is_valid = "${is_valid}"
             `;
         }
+
+        query += ` ORDER BY is_valid ASC `;
         return await conn.query(query);
-    }
+    },
 };

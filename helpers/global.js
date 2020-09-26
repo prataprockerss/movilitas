@@ -88,6 +88,39 @@ module.exports = {
             }
         });
     },
+    DELETE: async (con, table, params = []) => {
+        var query = ``;
+        var where = ``;
+        return new Promise(async (resolve, reject) => {
+            if (table === "") {
+                reject("table name can not be blank");
+            }
+
+            if (params.length) {
+                for (let i = 0; i < params.length; i++) {
+                    if (i == 0) {
+                        where += ` WHERE ${Object.keys(params[i])[0]} = "${
+                            params[i][Object.keys(params[i])[0]]
+                        }" `;
+                    } else {
+                        where += ` AND ${Object.keys(params[i])[0]} = "${
+                            params[i][Object.keys(params[i])[0]]
+                        }" `;
+                    }
+                }
+            }
+            query = ` DELETE FROM ${table} `;
+            if (where !== "") {
+                query = query + where;
+            }
+            try {
+                let result = await con.query(query);
+                resolve(result);
+            } catch (error) {
+                reject(error);
+            }
+        });
+    },
     FETCH: async (
         con,
         table,

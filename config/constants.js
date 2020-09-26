@@ -3,7 +3,8 @@ const commonConstants = {
     RS_CONFIG: {
         length: 12,
         charset: "alphabetic",
-    },
+    }, 
+    MAX_LIMIT: 7, // Cached data limit 
     TTL : 10 // This Time is in Minute
 };
 
