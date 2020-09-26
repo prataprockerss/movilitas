@@ -1,14 +1,13 @@
-## Movilitas assignment Github repo [Pratap Tondwalkar]
----
+# Movilitas assignment Github repo [Pratap Tondwalkar]
 
-# Config Information 
+## Config Information 
 You can change all config information in `./config/constants.js`
 - `MAX_LIMIT` is for set cached table maximum records limit.
 - `TTL` Default Time to Live time is in minute store, you can change here.
 - `RS_CONFIG` is Random String coinfig.
 
 
-# End point details 
+## End point details 
 
 - [GET] http://localhost:8080 Get all chached table information.
 - [GET] http://localhost:8080?key=hTDKbOpvZEjH Retrive single key information.
@@ -17,14 +16,14 @@ You can change all config information in `./config/constants.js`
 - [DELETE] http://localhost:8080/delete-all Delete all cached data.
 
 
-# Node Packaged information 
+## Node Packaged information 
 
 - [Node Random String](https://www.npmjs.com/package/randomstring) 
 - [Express Form](https://www.npmjs.com/package/express-form) To validate endpoint inputs
 - [MySql](https://www.npmjs.com/package/mysql)
 
 
-# DataBase Information
+## DataBase Information
 ```mysql
 -- Create DB
 CREATE DATABASE `movilitas`;
